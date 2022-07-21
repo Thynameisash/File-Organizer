@@ -23,10 +23,10 @@ if __name__ == "__main__":
     create("Coding Files")
     create("Others")
 
-    imgexts = [".jpg", ".png", ".jpeg"]
+    imgexts = [".jpg", ".png", ".jpeg", ".svg"]
     docexts = [".doc", ".docx", ".pdf", ".txt"]
     videxts = [".avi", ".mkv", ".mp4", ".wav", ".mov", ".mpeg-4"]
-    codexts = [".c", ".cpp", ".java", ".js", ".php"]
+    codexts = [".c", ".cpp", ".java", ".js", ".php", "py"]
 
     images = [file for file in allfiles if os.path.splitext(file)[1].lower() in imgexts]
     docs = [file for file in allfiles if os.path.splitext(file)[1].lower() in docexts]
