@@ -22,13 +22,16 @@ if __name__ == "__main__":
     create("Videos")
     create("Coding Files")
     create("Others")
+    create("Audio")
 
     imgexts = [".jpg", ".png", ".jpeg", ".svg"]
     docexts = [".doc", ".docx", ".pdf", ".txt"]
     videxts = [".avi", ".mkv", ".mp4", ".wav", ".mov", ".mpeg-4"]
     codexts = [".c", ".cpp", ".java", ".js", ".php", "py"]
+    audexts = [".mp3", ".wav", ".mpeg-3"]
 
     images = [file for file in allfiles if os.path.splitext(file)[1].lower() in imgexts]
+    aud = [file for file in allfiles if os.path.splitext(file)[1].lower() in audexts]
     docs = [file for file in allfiles if os.path.splitext(file)[1].lower() in docexts]
     media = [file for file in allfiles if os.path.splitext(file)[1].lower() in videxts]
     codes = [file for file in allfiles if os.path.splitext(file)[1].lower() in codexts]
@@ -39,14 +42,23 @@ if __name__ == "__main__":
         and (os.path.splitext(file)[1].lower() not in docexts)
         and (os.path.splitext(file)[1].lower() not in videxts)
         and (os.path.splitext(file)[1].lower() not in codexts)
+        and (os.path.splitext(file)[1].lower() not in audexts)
         and os.path.isfile(file)
     ]
-    map = {"Images": 0, "Docs": 0, "Videos": 0, "Coding Files": 0, "Others": 0}
+    map = {
+        "Images": 0,
+        "Docs": 0,
+        "Videos": 0,
+        "Coding Files": 0,
+        "Others": 0,
+        "Audio": 0,
+    }
     move("Images", images, map)
     move("Docs", docs, map)
     move("Videos", media, map)
     move("Coding Files", codes, map)
     move("Others", others, map)
+    move("Audio", aud, map)
     print(f"Directory Organized.", len(map), "folders created.")
     for i in map:
         if map.get(i) != 0:
